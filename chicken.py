@@ -1,3 +1,4 @@
+# 원래 계획했던 방향과 프로젝트 진행 방향이 달라져서 보류
 import pygame
 import random
 
