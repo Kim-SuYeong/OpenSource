@@ -4,7 +4,6 @@ import pygame
 pygame.init()
 Clock = pygame.time.Clock()
 Count = 0
-Move = 120
 
 # 화면
 Screen_Width = 1280
@@ -12,28 +11,31 @@ Screen_Height = 720
 Screen = pygame.display.set_mode((Screen_Width, Screen_Height))
 
 # 화면 타이틀 설정
-pygame.display.set_caption("방구석 트레이너")  # 게임 이름
+pygame.display.set_caption("방구석 트레이너")
 
 # 배경 이미지 불러오기
 BackScreen = pygame.image.load("ScreenYellow.PNG").convert_alpha()
 BackScreen = pygame.transform.scale(BackScreen, (1280, 720))
 
 Left_1 = pygame.image.load("gin_tape_fan_man.png").convert_alpha()
-Left_1 = pygame.transform.scale(Left_1, (300, 300))
-Left_2 = pygame.image.load("gin_tape_fan_man_reflect.png").convert_alpha()
-Left_2 = pygame.transform.scale(Left_2, (300, 300))
+Left_1 = pygame.transform.scale(Left_1, (720, 720))
+
 Right_1 = pygame.image.load("gin_tape_fan_woman.png").convert_alpha()
-Right_1 = pygame.transform.scale(Right_1, (300, 300))
-Right_2 = pygame.image.load("gin_tape_fan_woman_reflect.png").convert_alpha()
-Right_2 = pygame.transform.scale(Right_2, (300, 300))
+Right_1 = pygame.transform.scale(Right_1, (720, 720))
 
 # 이미지 좌표(위치)
-Left_x = 60
-Left_y = Screen_Height
-Right_x = 900
-Right_y = Screen_Height
-Left_x_2 = 0
-Right_x_2 = 0
+Level_1_Left_x = Screen_Width/2-700
+Level_1_Left_y = Screen_Height
+Level_1_Right_x = Screen_Width/2
+Level_1_Right_y = Screen_Height
+
+Level_2_Left_x = Screen_Width/2-700
+Level_2_Left_y = 50
+Level_2_Right_x = Screen_Width/2
+Level_2_Right_y = 50
+
+Move_y = (Level_2_Right_y-Level_1_Right_y)/5
+Move_x = (Level_2_Right_x-10)/3
 
 # 이벤트
 # Now_Time = pygame.time.get_ticks()
@@ -59,28 +61,24 @@ while not Crashed:
                     Count += 1
 
     Screen.blit(BackScreen, (0, 0))
-
+    Screen.blit(Left_1, (Level_1_Left_x, Level_1_Left_y))
+    Screen.blit(Right_1, (Level_1_Right_x, Level_1_Right_y))
     if Count == 1:
-        Left_y -= Move
-        Right_y -= Move
-        if Left_y == 120 and Right_y == 120:
-            Left_y = 240
-            Right_y = 240
-            Screen.blit(Left_1, (Left_x, Left_y))
-            Screen.blit(Right_1, (Right_x, Right_y))
+        if Level_1_Right_y > Level_2_Right_y and Level_1_Left_y > Level_2_Left_y:
+            Level_1_Right_y += Move_y
+            Level_1_Left_y += Move_y
+
     elif Count == 2:
-        Left_x_2 = Left_x - 60
-        Right_x_2 = Right_x + 60
-        Screen.blit(Left_2, (Left_x_2, Left_y))
-        Screen.blit(Right_2, (Right_x_2, Right_y))
+        Left_1 = pygame.image.load("gin_tape_fan_man_reflect.png").convert_alpha()
+        Left_1 = pygame.transform.scale(Left_1, (720, 720))
+        Right_1 = pygame.image.load("gin_tape_fan_woman_reflect.png").convert_alpha()
+        Right_1 = pygame.transform.scale(Right_1, (720, 720))
+
     elif Count == 3:
-        Left_y += Move
-        Right_y += Move
-        Screen.blit(Left_2, (Left_x, Left_y))
-        Screen.blit(Right_2, (Right_x, Right_y))
+        Level_1_Right_y -= Move_y
+        Level_1_Left_y -= Move_y
 
     pygame.display.update()
 
 pygame.time.delay(3000)
 pygame.quit()
-
