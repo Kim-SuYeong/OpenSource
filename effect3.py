@@ -27,8 +27,8 @@ Level_1_y = 250
 Level_2_x = Screen_Width/2-140
 Level_2_y = 250
 
-Move_x = (Level_2_x-Level_1_x)/5
-Move_y = 50
+Move_x = 0
+Move_y = 3.5
 
 # 이벤트
 # Now_Time = pygame.time.get_ticks()
@@ -61,8 +61,10 @@ while not Crashed:
     Screen.blit(BackScreen, (0, 0))
     Screen.blit(Fan, (Level_1_x, Level_1_y))
     if Count == 1:
+        Move_x += 3.5
         if Level_1_x > Level_2_x:
-            Level_1_x += Move_x
+            Level_1_x -= Move_x
+
     if Count == 2:
         Fan = pygame.image.load("Fancafe2.png").convert_alpha()
         Fan = pygame.transform.scale(Fan, (780, 560))
@@ -71,9 +73,18 @@ while not Crashed:
         Fan = pygame.image.load("Fancafe1.png").convert_alpha()
 
     if Count == 4:
-        Level_1_y += Move_y
+        Move_y -= 3.5
+        Level_1_y -= Move_y
 
+    '''
+    Move_y = 0
+    
+    if Count == 4:
+        Move_y -= 3.5
+        Level_1_y -= Move_y
+    '''
     pygame.display.update()
 
 pygame.time.delay(3000)
 pygame.quit()
+
