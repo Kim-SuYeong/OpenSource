@@ -25,7 +25,7 @@ Right = pygame.image.load("Cheerleader2.png").convert_alpha()
 Right = pygame.transform.scale(Right, (660, 580))
 
 # 이미지 좌표(위치)
-Level_1_Left_x = Screen_Width/2-330-990
+Level_1_Left_x = Screen_Width/2-330-900
 Level_1_Left_y = Screen_Height
 Level_1_Right_x = Screen_Width/2-330+900
 Level_1_Right_y = Screen_Height
@@ -34,10 +34,10 @@ Level_2_Left_y = 300
 Level_2_Right_x = Screen_Width/2-330+330
 Level_2_Right_y = 300
 
-Move_Right_x = (Level_2_Right_x - Level_1_Right_x)/10
-Move_Right_y = (Level_2_Right_y - Level_1_Right_y)/10
-Move_Left_x = (Level_2_Left_x - Level_1_Left_x)/10
-Move_Left_y = (Level_2_Left_y - Level_1_Left_y)/10
+Move_Right_x = 0
+Move_Right_y = 0
+Move_Left_x = 0
+Move_Left_y = 0
 # 이벤트
 # Now_Time = pygame.time.get_ticks()
 Crashed = False
@@ -71,6 +71,10 @@ while not Crashed:
     Screen.blit(Right, (Level_1_Right_x, Level_1_Right_y))
 
     if Count == 1:
+        Move_Right_x -= 3
+        Move_Right_y -= 2
+        Move_Left_x += 3
+        Move_Left_y -= 2
         if Level_1_Right_x > Level_2_Right_x and Level_1_Left_x < Level_2_Left_x and Level_1_Right_y > Level_2_Right_y and Level_1_Left_y > Level_2_Left_y:
             Level_1_Right_x += Move_Right_x
             Level_1_Right_y += Move_Right_y
@@ -84,6 +88,8 @@ while not Crashed:
         Left = pygame.image.load("Cheerleader1.png").convert_alpha()
         Right = pygame.image.load("Cheerleader2.png").convert_alpha()
     elif Count == 4:
+        Move_Right_y -= 2
+        Move_Left_y -= 2
         Level_1_Right_y -= Move_Right_y
         Level_1_Left_y -= Move_Left_y
 
