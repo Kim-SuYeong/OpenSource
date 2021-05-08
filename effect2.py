@@ -4,8 +4,6 @@ import pygame
 pygame.init()
 Clock = pygame.time.Clock()
 Count = 0
-Move_x = 33
-Move_y = 30
 
 # 화면
 Screen_Width = 1280
