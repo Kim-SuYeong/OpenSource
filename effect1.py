@@ -36,8 +36,7 @@ Level_2_Left_y = 50
 Level_2_Right_x = Screen_Width/2
 Level_2_Right_y = 50
 
-Move_y = (Level_2_Right_y-Level_1_Right_y)/5
-Move_x = (Level_2_Right_x-10)/3
+Move_y = 0
 
 # 이벤트
 # Now_Time = pygame.time.get_ticks()
@@ -69,6 +68,7 @@ while not Crashed:
     Screen.blit(Left_1, (Level_1_Left_x, Level_1_Left_y))
     Screen.blit(Right_1, (Level_1_Right_x, Level_1_Right_y))
     if Count == 1:
+        Move_y -= 2.5
         if Level_1_Right_y > Level_2_Right_y and Level_1_Left_y > Level_2_Left_y:
             Level_1_Right_y += Move_y
             Level_1_Left_y += Move_y
@@ -80,6 +80,7 @@ while not Crashed:
         Right_1 = pygame.transform.scale(Right_1, (720, 720))
 
     elif Count == 3:
+        Move_y -= 0.5
         Level_1_Right_y -= Move_y
         Level_1_Left_y -= Move_y
 
@@ -87,3 +88,4 @@ while not Crashed:
 
 pygame.time.delay(3000)
 pygame.quit()
+
