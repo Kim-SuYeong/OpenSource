@@ -66,10 +66,14 @@ while not Crashed:
             Level_1_x -= Move_x
 
     if Count == 2:
+        Level_1_y = Level_2_x/2 - 90
+        Level_1_x = Level_2_x/2 + 200
         Fan = pygame.image.load("Fancafe2.png").convert_alpha()
-        Fan = pygame.transform.scale(Fan, (780, 560))
+        Fan = pygame.transform.scale(Fan, (830, 595))
 
     if Count == 3:
+        Level_1_y = Level_2_x/2
+        Level_1_x = Level_2_x / 2 + 220
         Fan = pygame.image.load("Fancafe1.png").convert_alpha()
 
     if Count == 4:
