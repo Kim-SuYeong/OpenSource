@@ -4,6 +4,8 @@ import pygame
 pygame.init()
 Clock = pygame.time.Clock()
 Count = 0
+Background_Delay = 3000
+Background_Time = 0
 
 # 화면
 Screen_Width = 1280
@@ -53,11 +55,14 @@ while not Crashed:
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_DOWN:
-                if Count == 0:
+                Now_Time = pygame.time.get_ticks()
+                if Now_Time > Background_Time + Background_Delay:
+                    Background_Time = Now_Time
+                if Count == 0 and Now_Time > 3000:
                     Count += 1
-                elif Count == 1:
+                elif Count == 1 and Now_Time > 5000:
                     Count += 1
-                elif Count == 2:
+                elif Count == 2 and Now_Time > 7000:
                     Count += 1
 
     Screen.blit(BackScreen, (0, 0))
