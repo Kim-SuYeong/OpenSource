@@ -85,9 +85,13 @@ while not Crashed:
     elif Count == 2:
         Left = pygame.image.load("Cheerleader2.png").convert_alpha()
         Right = pygame.image.load("Cheerleader1.png").convert_alpha()
+
     elif Count == 3:
         Left = pygame.image.load("Cheerleader1.png").convert_alpha()
         Right = pygame.image.load("Cheerleader2.png").convert_alpha()
+        Move_Right_y = 0
+        Move_Left_y = 0
+
     elif Count == 4:
         Move_Right_y -= 2
         Move_Left_y -= 2
