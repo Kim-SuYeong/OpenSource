@@ -78,9 +78,10 @@ while not Crashed:
         Left_1 = pygame.transform.scale(Left_1, (720, 720))
         Right_1 = pygame.image.load("gin_tape_fan_woman_reflect.png").convert_alpha()
         Right_1 = pygame.transform.scale(Right_1, (720, 720))
+        Move_y = 0
 
     elif Count == 3:
-        Move_y -= 0.5
+        Move_y -= 2.5
         Level_1_Right_y -= Move_y
         Level_1_Left_y -= Move_y
 
@@ -88,4 +89,3 @@ while not Crashed:
 
 pygame.time.delay(3000)
 pygame.quit()
-
