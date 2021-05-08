@@ -29,6 +29,7 @@ Level_1_Left_x = Screen_Width/2-330-900
 Level_1_Left_y = Screen_Height
 Level_1_Right_x = Screen_Width/2-330+900
 Level_1_Right_y = Screen_Height
+
 Level_2_Left_x = Screen_Width/2-330-330
 Level_2_Left_y = 300
 Level_2_Right_x = Screen_Width/2-330+330
@@ -71,9 +72,9 @@ while not Crashed:
     Screen.blit(Right, (Level_1_Right_x, Level_1_Right_y))
 
     if Count == 1:
-        Move_Right_x -= 3
+        Move_Right_x -= 2.5
         Move_Right_y -= 2
-        Move_Left_x += 3
+        Move_Left_x += 2.5
         Move_Left_y -= 2
         if Level_1_Right_x > Level_2_Right_x and Level_1_Left_x < Level_2_Left_x and Level_1_Right_y > Level_2_Right_y and Level_1_Left_y > Level_2_Left_y:
             Level_1_Right_x += Move_Right_x
