@@ -46,13 +46,16 @@ while not Crashed:
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_DOWN:
-                if Count == 0:
+                Now_Time = pygame.time.get_ticks()
+                if Now_Time > Background_Time + Background_Delay:
+                    Background_Time = Now_Time
+                if Count == 0 and Now_Time > 3000:
                     Count += 1
-                elif Count == 1:
+                elif Count == 1 and Now_Time > 4000:
                     Count += 1
-                elif Count == 2:
+                elif Count == 2 and Now_Time > 6000:
                     Count += 1
-                elif Count == 3:
+                elif Count == 3 and Now_Time > 7000:
                     Count += 1
 
     Screen.blit(BackScreen, (0, 0))
