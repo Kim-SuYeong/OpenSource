@@ -1,5 +1,5 @@
-# 2021.5,15 (19:22) 운동 메뉴 선택
-# 슬라이드쇼 효과 및 fade in - 김수영
+# 2021.5,15 (19:59) 운동 메뉴 선택
+# 슬라이드쇼 효과 및 fade in and fade out - 김수영
 
 import pygame
 
@@ -87,7 +87,6 @@ Font_y = 1.5*Crowd_Level_2_y + 30
 Move_y = 3.5
 
 # 이벤트
-# Now_Time = pygame.time.get_ticks()
 Crashed = False
 Yes = True
 while not Crashed:
@@ -122,6 +121,9 @@ while not Crashed:
                 elif Count == 3:
                     Count = 1
 
+            if event.key == pygame.K_LEFT:
+                Count = 4
+
     Screen.blit(BackScreen, (0, 0))
     Screen.blit(DownBlue, (DB_Level_1_x, DB_Level_1_y))
     Screen.blit(UpBlue, (UB_Level_1_x, UB_Level_1_y))
@@ -143,6 +145,7 @@ while not Crashed:
             OpacityLevel += 18.5
 
         Move_y += 3.5
+
         if DB_Level_1_y > DB_Level_2_y:
             DB_Level_1_y -= 0.9*Move_y
 
@@ -203,6 +206,25 @@ while not Crashed:
 
         if Crowd_Level_1_y > Crowd_Level_2_y:
             Crowd_Level_1_y -= 0.46 * Move_y
+
+    if Count == 4:
+        DownBlue.set_alpha(OpacityLevel)
+        Screen.blit(DownBlue, (DB_Level_1_x, DB_Level_1_y))
+        UpBlue.set_alpha(OpacityLevel)
+        Screen.blit(UpBlue, (UB_Level_1_x, UB_Level_1_y))
+        Crowd.set_alpha(OpacityLevel)
+        Screen.blit(Crowd, (Crowd_Level_1_x, Crowd_Level_1_y))
+        SongBlock.set_alpha(OpacityLevel)
+        Screen.blit(SongBlock, (SB_x, SB_y))
+        Prev.set_alpha(OpacityLevel)
+        Screen.blit(Prev, (Prev_x, Prev_y))
+        Next.set_alpha(OpacityLevel)
+        Screen.blit(Next, (Next_x, Next_y))
+        Exit.set_alpha(OpacityLevel)
+        Screen.blit(Exit, (Exit_x, Exit_y))
+
+        if OpacityLevel > 0:
+            OpacityLevel -= 18.5
 
     pygame.display.update()
 
