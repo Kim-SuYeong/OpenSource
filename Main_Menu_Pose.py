@@ -1,5 +1,5 @@
-# 2021.5,15 (17:15) 운동 메뉴 선택
-# 슬라이드쇼 효과 - 김수영
+# 2021.5,15 (19:22) 운동 메뉴 선택
+# 슬라이드쇼 효과 및 fade in - 김수영
 
 import pygame
 
@@ -91,7 +91,6 @@ Move_y = 3.5
 Crashed = False
 Yes = True
 while not Crashed:
-    print(Count)
     dt = Clock.tick(30)
     for event in pygame.event.get():  # 어떤 이벤트가 발생하였는가?
         if event.type == pygame.QUIT:  # 창이 닫히는 이벤트가 발생하였는가?
@@ -105,7 +104,6 @@ while not Crashed:
             if event.key == pygame.K_RIGHT:
                 OpacityLevel = -255
                 Move_y = 0
-                Move_y += 3.5
                 DB_Level_1_x = -20
                 DB_Level_1_y = 1.2 * Screen_Height + 120
                 UB_Level_1_x = Screen_Width / 2 - 365
@@ -169,6 +167,8 @@ while not Crashed:
         if OpacityLevel <= 250:
             OpacityLevel += 18.5
 
+        Move_y += 3.5
+
         if DB_Level_1_y > DB_Level_2_y:
             DB_Level_1_y -= 0.9 * Move_y
 
@@ -192,6 +192,8 @@ while not Crashed:
 
         if OpacityLevel <= 250:
             OpacityLevel += 18.5
+
+        Move_y += 3.5
 
         if DB_Level_1_y > DB_Level_2_y:
             DB_Level_1_y -= 0.9 * Move_y
